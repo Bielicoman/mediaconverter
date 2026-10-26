@@ -1,0 +1,15 @@
+{
+  "pluginId": "com.alexascencio.mediaconverter.desktop",
+  "name": "Media Converter",
+  "version": "2.6.0",
+  "channel": "preview",
+  "author": "Alex Ascencio",
+  "platform": [
+    "Windows",
+    "macOS",
+    "Linux"
+  ],
+  "releaseDate": "2026-10-26",
+  "releaseUrl": "https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.0",
+  "changelog": "Roda sem espaços vazios, rodapé sem sobreposição, gesto restrito a arraste reconhecido do Explorador, pacotes nativos e exemplos reais."
+}

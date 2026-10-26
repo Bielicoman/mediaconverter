@@ -1,0 +1,16 @@
+{
+  "appId":"com.alexascencio.mediaconverter.desktop",
+  "productName":"Media Converter",
+  "electronVersion":"44.9.3",
+  "asar":false,
+  "directories":{"app":"app","output":"dist"},
+  "files":["package.json","src/**/*","icons/**/*","licenses/**/*","node_modules/**/*"],
+  "extraFiles":["LICENSE","THIRD-PARTY-NOTICES.md"],
+  "artifactName":"MediaConverter-${version}-${os}-${arch}.${ext}",
+  "mac":{"target":["dmg","zip"],"category":"public.app-category.productivity","identity":null,"hardenedRuntime":false},
+  "linux":{"target":["AppImage","deb"],"category":"Utility","icon":"app/icons/logo.png","maintainer":"Alex Ascencio","desktop":{"entry":{"Name":"Media Converter","Comment":"Converta arquivos locais preservando o original"}}},
+  "win":{"target":["nsis"],"icon":"app/icons/icon.ico","signAndEditExecutable":false},
+  "nsis":{"oneClick":false,"perMachine":false,"allowToChangeInstallationDirectory":true,"deleteAppDataOnUninstall":false},
+  "publish":null
+}
+

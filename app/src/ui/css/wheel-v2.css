@@ -1,0 +1,20 @@
+html,body{color:#edf6f0}#stage{inset:55px 28px 52px}.mc-wheel .mc-slice-bg{fill:#a7cbb818;stroke:#d0f5df15}.mc-wheel .mc-badge{font:700 16px Manrope,sans-serif;letter-spacing:-.25px}.mc-wheel .mc-sub{font:500 9px Manrope,sans-serif}.mc-wheel .mc-key{fill:#afc2b580}.mc-wheel .mc-slice{transition:opacity .2s ease-out,transform .32s cubic-bezier(.22,1,.36,1);transform:scale(.92)}.mc-wheel .mc-center-bg{fill:#14251b;stroke:#b8efcd3b}.mc-wheel .mc-halo{opacity:.4}.wheel-modes{position:absolute;top:7px;left:50%;transform:translateX(-50%);display:flex;background:#17261ef2;padding:4px;border:1px solid #d0f5df20;border-radius:999px;gap:2px;z-index:3;box-shadow:0 8px 25px #0002}.wheel-modes button{border:0;color:#adbcaf;background:transparent;padding:8px 10px;border-radius:999px;font:600 10px Manrope,sans-serif;cursor:pointer}.wheel-modes button.active{background:#9ce6b82a;color:#d4fbe4}.wheel-paging{position:absolute;bottom:27px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;border-radius:999px;background:#17261ef2;border:1px solid #d0f5df20;padding:3px 8px;color:#b3c8bb;font-size:10px}.wheel-paging button{background:transparent;border:0;color:inherit;font-size:19px;cursor:pointer;min-width:22px}.wheel-paging button:disabled{opacity:.3}#tip{font-size:10px;bottom:0;max-width:400px;padding:3px 12px;min-height:17px;background:#17261ef2}#close{right:9px;top:9px;z-index:5}.actions{z-index:5;bottom:60px}.mc-wheel .mc-c2{text-transform:none;letter-spacing:0}.mc-wheel .mc-c1{font:700 15px Manrope,sans-serif}#wheelThumb{position:absolute;left:calc(50% - 26px);top:calc(50% - 39px);width:52px;height:42px;object-fit:cover;border-radius:9px;border:1px solid #d4f8df33;pointer-events:none}body.has-thumb .mc-c1{transform:translateY(30px);font-size:11px}body.has-thumb .mc-c2{opacity:0}body.converting #wheelThumb{display:none}body.converting .mc-c1{transform:none;font-size:15px}body.converting .mc-c2{opacity:1}body[data-theme=light] .mc-slice-bg{fill:#eef6ebed;stroke:#fff8}body[data-theme=light] .mc-wheel>circle:nth-of-type(2){fill:#c9dfc5d9}body[data-theme=light] .mc-badge{fill:#274a34}body[data-theme=light] .mc-sub{fill:#52705c}body[data-theme=light] .mc-center-bg{fill:#edf6eb;stroke:#3d715f55}body[data-theme=light] .mc-c1{fill:#284c36}body[data-theme=light] .mc-c2{fill:#5c7b65}button:focus-visible{outline:2px solid #a2f5c5;outline-offset:2px}
+
+.mc-wheel .mc-halo{display:none}.mc-wheel .mc-slice.hot .mc-slice-bg{transform:none;fill:#73e6ac;stroke:#b3f5ce80}.mc-wheel .mc-slice.hot .mc-badge{fill:#163424}.mc-wheel .mc-slice.hot .mc-sub{fill:#305e42}.mc-wheel>circle:nth-of-type(2){fill:#17241cf5}
+
+.mc-wheel.crowded .mc-badge{font-size:10px}.mc-wheel.crowded .mc-sub{display:none}.mc-wheel.crowded .mc-key{font-size:7px}#tip{max-width:560px;bottom:1px}.wheel-paging{bottom:29px}.mc-wheel .mc-slice.placeholder{pointer-events:none}#wheelThumb{top:calc(50% - 39px)}
+/* Restored radial design. Dismiss outside or with Escape. */
+#close{display:none!important}
+#stage{inset:45px 20px 30px}
+#stage .mc-slice.placeholder .mc-slice-bg{fill:#ffffff02;stroke:#ffffff05}
+#stage .mc-slice.placeholder text{display:none}
+/* Every available option owns one equal part of the full circle. */
+.mc-wheel .mc-badge,.mc-wheel.crowded .mc-badge{font-size:var(--wheel-font,16px)}
+.mc-wheel .mc-key{font-family:Manrope,sans-serif;font-weight:500}
+/* Footer has its own reserved area, outside the radial controls. */
+#stage{inset:46px 24px 68px}
+.wheel-paging{display:none!important}
+#tip{bottom:9px;max-width:360px;box-sizing:border-box;min-height:24px;padding:5px 12px;line-height:1.4}
+.actions{bottom:39px}
+#stage{display:block}
+#stage svg{display:block;width:100%;height:100%;min-width:0;min-height:0}

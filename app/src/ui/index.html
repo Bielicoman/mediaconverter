@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' file: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Converter</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/converter.css">
+<link rel="stylesheet" href="css/wheel.css">
+<link rel="stylesheet" href="css/studio.css">
+</head>
+<body>
+<div class="titlebar">
+  <div class="titlebar-brand">
+    <div class="titlebar-icon">
+      <svg viewBox="0 0 20 20" fill="none"><rect x="1" y="1" width="18" height="18" stroke="#e8eaee" stroke-width="1.3"/><path d="M5 9.2V7.6a2 2 0 0 1 2-2h7.5m0 0L12 3.2m2.5 2.4L12 8" stroke="#3ee08f" stroke-width="1.5"/><path d="M15 10.8v1.6a2 2 0 0 1-2 2H5.5m0 0L8 16.8m-2.5-2.4L8 12" stroke="#3ee08f" stroke-width="1.5"/></svg>
+    </div>
+    <span>MEDIA CONVERTER</span>
+    <span class="brand-badge">DESKTOP</span>
+    <span class="brand-status-dot warn" id="engineDot" title="Verificando motores"></span>
+  </div>
+  <div class="titlebar-controls">
+    <button id="btnWinMinimize" class="titlebar-btn" title="Minimizar"><svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg></button>
+    <button id="btnWinMaximize" class="titlebar-btn" title="Maximizar ou restaurar"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 4v10h12V8H6z"/></svg></button>
+    <button id="btnWinClose" class="titlebar-btn btn-close" title="Fechar (continua na bandeja)"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+</div>
+
+<div class="app-container">
+  <header class="workspace-heading"><div><p class="workspace-kicker">Media Converter 2</p><h1>O formato certo. Sem sair do fluxo.</h1><p>Converta, recorte e prepare suas cópias. Tudo acontece no seu computador.</p></div><span class="workspace-signature">Por Alex Ascencio</span></header>
+
+  <div class="nav-row">
+    <div class="tabs-container" role="tablist">
+      <button class="nav-tab active" data-tab="tab-files" role="tab"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>Arquivos</button>
+      <button class="nav-tab" data-tab="tab-folder" role="tab"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>Pasta inteira</button>
+      <button class="nav-tab" data-tab="tab-wheel" role="tab"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 2.07A8 8 0 0 1 19.93 11H13V4.07zM11 4.07V11H4.07A8 8 0 0 1 11 4.07zM4.07 13H11v6.93A8 8 0 0 1 4.07 13zM13 19.93V13h6.93A8 8 0 0 1 13 19.93z"/></svg>Roda rápida</button>
+    </div>
+    <div class="nav-actions">
+      <button id="btnOpenSettings" class="icon-btn" title="Configurações e motores"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></button>
+    </div>
+  </div>
+
+  <div class="dir-bar">
+    <div class="dir-info">
+      <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+      <span class="dir-label">Destino:</span>
+      <span id="outDirPath" class="dir-path">Ao lado do original</span>
+    </div>
+    <div class="dir-actions">
+      <button id="btnBeside" class="btn-dir hidden" title="Salvar cada cópia na pasta do arquivo original">Ao lado do original</button>
+      <button id="btnChangeDir" class="btn-dir" title="Escolher uma pasta para todas as cópias"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>Alterar</button>
+      <button id="btnOpenDir" class="btn-dir hidden" title="Abrir pasta de destino"><svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>Abrir</button>
+    </div>
+  </div>
+
+  <div class="studio-help"><kbd>Shift</kbd><span>durante o arraste abre a roda</span><kbd>Alt + Shift + C</kbd><span>usa a seleção</span><kbd>Ctrl + O</kbd><span>adiciona arquivos</span></div>
+  <!-- Arquivos -->
+  <div id="tab-files" class="tab-content active">
+    <div class="main-card">
+      <p class="field-caption">Arquivos para converter</p>
+      <div id="dropZone" class="drop-zone">
+        <div class="dz-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9V6.5A2.5 2.5 0 0 1 6.5 4H18m0 0-3-3m3 3-3 3"/><path d="M20 15v2.5a2.5 2.5 0 0 1-2.5 2.5H6m0 0 3 3m-3-3 3-3"/></svg></div>
+        <div class="dz-text"><h3>Arraste. Escolha. Pronto.</h3><p>Vídeo, áudio, imagem, documento, planilha, apresentação, PDF, texto, dados e legendas. Qualquer outro arquivo pode virar ZIP.</p></div>
+        <div class="dz-actions"><button id="btnPickFiles" class="btn-paste">Escolher arquivos</button><button id="btnPickFolderFiles" class="btn-paste">Adicionar pasta</button><button id="btnClearFiles" class="btn-paste hidden">Limpar</button></div>
+      </div>
+      <div id="fileList" class="file-list" aria-label="Arquivos adicionados"></div>
+      <div id="groupBlock" class="hidden">
+        <p class="format-caption">Formato de saída</p>
+        <div id="groupList" class="group-list"></div>
+      </div>
+      <div id="optionBlock" class="option-row hidden">
+        <div class="option"><span>Qualidade</span><div class="segmented" id="qualitySeg"><button data-q="max">Máxima</button><button data-q="balanced">Equilibrada</button><button data-q="small">Compacta</button></div></div>
+        <label class="option" id="resOption"><span>Resolução máxima</span><select id="maxHeight" class="target-select"><option value="0">Original</option><option value="2160">Até 4K</option><option value="1440">Até 1440p</option><option value="1080">Até 1080p</option><option value="720">Até 720p</option><option value="480">Até 480p</option></select></label>
+      </div>
+      <div class="convert-bar">
+        <span id="filesSummary" class="summary-line">Nenhum arquivo adicionado.</span>
+        <button id="btnConvert" class="btn-download-primary" disabled><svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg><span id="btnConvertLabel">Converter</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pasta inteira -->
+  <div id="tab-folder" class="tab-content">
+    <div class="main-card">
+      <p class="field-caption">Pasta de origem</p>
+      <div class="input-capsule">
+        <div class="input-platform-icon"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div>
+        <input type="text" id="folderPath" class="url-input" placeholder="Escolha uma pasta para converter tudo de uma vez" readonly>
+        <button id="btnPickFolder" class="btn-paste">Escolher pasta</button>
+      </div>
+      <label class="check"><input type="checkbox" id="folderRecursive"> Incluir subpastas</label>
+      <div id="folderGroups" class="hidden">
+        <p class="format-caption">O que fazer com cada tipo</p>
+        <div id="folderGroupList" class="group-list"></div>
+      </div>
+      <p id="folderHint" class="empty-hint">As cópias seguem o destino acima. Tipos marcados como “Não converter” ficam de fora.</p>
+      <div class="convert-bar">
+        <span id="folderSummary" class="summary-line">Nenhuma pasta escolhida.</span>
+        <button id="btnConvertFolder" class="btn-download-primary" disabled><svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg><span id="btnConvertFolderLabel">Converter pasta</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roda rápida -->
+  <div id="tab-wheel" class="tab-content">
+    <div class="main-card">
+      <div class="wheel-layout">
+        <div>
+          <div class="wheel-stage" id="wheelPreview" aria-label="Prévia da roda rápida"></div>
+          <p class="wheel-caption">Selecione arquivos no Explorador e use o atalho, ou clique com o botão direito e escolha “Converter com Media Converter”. A cópia é salva ao lado do original.</p>
+          <button id="btnTestWheel" class="btn-paste" style="width:100%;justify-content:center;margin-top:10px;height:38px">Abrir a roda agora</button>
+        </div>
+        <div>
+          <p class="field-caption">Gestos e integração</p>
+          <div class="integration"><div><h4>Arrastar para converter</h4><p>Comece a arrastar um arquivo e pressione Shift. Solte sobre um formato. A roda fica aberta mesmo após soltar a tecla.</p><p class="state" id="gestureState">Verificando gesto…</p></div><select id="gestureSelect" class="target-select" style="width:142px"><option value="Shift">Shift + arrastar</option><option value="Ctrl+Shift">Ctrl + Shift</option><option value="off">Desativado</option></select></div>
+          <div class="integration-list">
+            <div class="integration"><div class="i-icon"><svg viewBox="0 0 24 24"><path d="M3 5h18v2H3V5zm0 6h12v2H3v-2zm0 6h18v2H3v-2z"/></svg></div><div><h4>Menu de contexto do Explorador</h4><p>Botão direito → “Converter com Media Converter”. No Windows 11, fica em “Mostrar mais opções”.</p><p class="state" id="stContext">Verificando…</p></div><button class="switch" role="switch" aria-checked="false" data-integration="contextMenu" aria-label="Menu de contexto"></button></div>
+            <div class="integration"><div class="i-icon"><svg viewBox="0 0 24 24"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg></div><div><h4>Enviar para</h4><p>Botão direito → Enviar para → Media Converter. Leva vários arquivos de uma vez.</p><p class="state" id="stSendTo">Verificando…</p></div><button class="switch" role="switch" aria-checked="false" data-integration="sendTo" aria-label="Enviar para"></button></div>
+            <div class="integration"><div class="i-icon"><svg viewBox="0 0 24 24"><path d="M20 5H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg></div><div><h4>Atalho global</h4><p>Abre a roda com os arquivos selecionados na janela do Explorador, na área de trabalho ou copiados com Ctrl+C.</p><p class="state" id="stHotkey">Verificando…</p></div><select id="hotkeySelect" class="target-select" style="width:142px;font-size:10.5px"></select></div>
+            <div class="integration"><div class="i-icon"><svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.83 2.17-1.42 1.42A6.92 6.92 0 0 1 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.17.99-4.1 2.58-5.42L6.17 5.17A8.93 8.93 0 0 0 3 12a9 9 0 0 0 18 0c0-2.74-1.23-5.18-3.17-6.83z"/></svg></div><div><h4>Iniciar com o Windows</h4><p>Abre minimizado na bandeja para o atalho funcionar desde o início.</p><p class="state off" id="stLogin">Desativado</p></div><button class="switch" role="switch" aria-checked="false" data-integration="openAtLogin" aria-label="Iniciar com o Windows"></button></div>
+            <div class="integration"><div class="i-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5v-3h14v3z"/></svg></div><div><h4>Manter na bandeja ao fechar</h4><p>Fechar a janela não encerra o app; o atalho e o menu continuam rápidos.</p><p class="state" id="stTray">Ativado</p></div><button class="switch" role="switch" aria-checked="true" data-setting="keepInTray" aria-label="Manter na bandeja"></button></div>
+          </div>
+          <div class="slices-editor">
+            <div class="slices-head"><h4>Fatias da roda</h4><select id="sliceCategory" class="target-select" style="width:170px"></select></div>
+            <div id="sliceGrid" class="slice-grid"></div>
+            <p class="wheel-caption" style="text-align:left">Sem limite de opções. A roda usa o mesmo número de divisões em todos os tipos; posições sem formato compatível ficam livres.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="progressCard" class="progress-card">
+    <div class="progress-header"><span id="progressTitle" class="progress-title">Convertendo…</span><span id="progressPercent" class="progress-percent">0%</span></div>
+    <div class="progress-bar-bg"><div id="progressBarFill" class="progress-bar-fill"></div></div>
+    <div class="progress-stats"><span id="progressStatus">Preparando…</span><span id="progressElapsed">00:00</span><button id="btnCancel" class="btn-cancel-download">Cancelar</button></div>
+  </div>
+
+  <div class="history-section">
+    <div class="history-header"><span>SUAS CONVERSÕES</span><div class="history-header-actions"><span id="historyCount" class="history-count">0</span><button id="btnClearHistory" class="btn-clear-history">Limpar</button></div></div>
+    <div id="historyList" class="history-list"></div>
+  </div>
+
+  <div class="author-footer">MEDIA CONVERTER DESKTOP · ALEX ASCENCIO <span id="appVersionTag"></span></div>
+</div>
+
+<div id="modalSettings" class="modal-backdrop">
+  <div class="modal-dialog">
+    <div class="modal-header"><span class="modal-title">Configurações e motores</span><button id="btnCloseSettings" class="icon-btn" title="Fechar"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+    <div class="modal-body"><div class="modal-row"><label for="themeSelect">Aparência</label><select id="themeSelect" class="modal-input"><option value="dark">Obsidian verde</option><option value="light">Vidro claro</option></select></div>
+      <div class="modal-row"><label for="setQuality">Qualidade padrão</label><select id="setQuality" class="modal-input"><option value="max">Máxima</option><option value="balanced">Equilibrada</option><option value="small">Compacta</option></select><small class="muted">Vale para o painel e para a roda rápida.</small></div>
+      <div class="modal-row"><label for="setMaxHeight">Resolução máxima padrão</label><select id="setMaxHeight" class="modal-input"><option value="0">Original</option><option value="2160">Até 4K</option><option value="1440">Até 1440p</option><option value="1080">Até 1080p</option><option value="720">Até 720p</option><option value="480">Até 480p</option></select></div>
+      <div class="modal-row"><label class="check"><input type="checkbox" id="setGpu"> Usar a GPU NVIDIA (NVENC) em MP4 H.264 e H.265 quando disponível</label><small class="muted">Mais rápido; com qualidade equivalente o arquivo costuma ficar um pouco maior que no processador.</small></div>
+      <div class="modal-row" style="background:rgba(0,0,0,.2);padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.06)">
+        <div style="font-weight:700;margin-bottom:8px">Motores de conversão</div>
+        <div class="engine-grid" id="engineGrid"><span>Verificando…</span><span></span></div>
+      </div>
+      <small class="muted" id="aboutLine"></small>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:6px;border-top:1px solid rgba(255,255,255,.07);padding:14px 23px"><button id="btnSaveSettings" class="btn-download-primary" style="min-height:38px">Salvar configurações</button></div>
+  </div>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="js/wheel-svg.js"></script>
+<script src="js/studio.js"></script>
+<script src="js/app.js"></script>
+<script src="js/watch.js"></script>
+</body>
+</html>
+
+

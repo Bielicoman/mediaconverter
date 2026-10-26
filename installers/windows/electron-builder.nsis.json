@@ -1,0 +1,35 @@
+{
+  "appId": "com.alexascencio.mediaconverter.desktop",
+  "productName": "Media Converter",
+  "artifactName": "MediaConverter-${version}-Windows-x64-Setup.exe",
+  "compression": "normal",
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "signAndEditExecutable": false,
+    "icon": "icons/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "selectPerMachineByDefault": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "runAfterFinish": true,
+    "deleteAppDataOnUninstall": false,
+    "include": "../installers/windows/uninstall-integration.nsh",
+    "installerLanguages": [
+      "pt_BR",
+      "en_US"
+    ]
+  },
+  "publish": null
+}

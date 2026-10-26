@@ -1,0 +1,14 @@
+node_modules/
+out/
+dist/
+app/bin/*.exe
+*.convertendo.*
+backups/
+docs/validation/
+.claude/
+.vercel/
+*.log
+*.tmp
+app/bin/*.dll
+app/bin/ffmpeg*
+app/bin/ffprobe*

@@ -1,0 +1,12 @@
+/* Shared desktop material tokens: neutral surfaces, precise green actions. */
+:root{--bg-app:#151b18;--bg-panel:#1d2520;--bg-card:#202a23;--bg-input:#141c17;--bg-elevated:#273129;--text-main:#edf2ee;--text-secondary:#b9c5bd;--text-muted:#8d9e92;--text-dim:#8d9e92;--accent-green:#68c493;--accent-green-hover:#83d3a9;--studio-bg:#151b18;--studio-panel:#202a23;--studio-text:#edf2ee;--studio-muted:#9db0a3;--studio-accent:#68c493}
+body{background:var(--bg-app)}
+body[data-theme=light]{--bg-app:#f0f2ef;--bg-panel:#f7f9f6;--bg-card:#fff;--bg-input:#f2f5f1;--bg-elevated:#fff;--text-main:#25372b;--text-secondary:#526357;--text-muted:#718075;--text-dim:#718075;--studio-bg:#f0f2ef;--studio-panel:#fff;--studio-text:#25372b;--studio-muted:#718075;--studio-accent:#167d4b;--accent-green:#167d4b;--accent-green-hover:#126a40;background:var(--bg-app)}
+.main-card,.history-section{border-radius:20px;box-shadow:0 3px 12px #10281908;border-color:#92a39720}
+.titlebar{border-bottom:1px solid #91a2951a}.titlebar-brand{font-weight:600;letter-spacing:.1px}.brand-badge{display:none}
+.tabs-container{background:var(--bg-input);border-radius:12px;padding:3px}.nav-tab{border-radius:9px;font-weight:500}.nav-tab.active{background:var(--bg-elevated);color:var(--studio-accent);box-shadow:0 1px 5px #10281912}
+.workspace-heading h1{font-size:29px;letter-spacing:-1px;font-weight:600}.workspace-heading .workspace-kicker{color:var(--studio-muted)}
+.drop-zone{border-radius:14px;background:var(--bg-input);border:1px dashed #92a39750;min-height:180px}.drop-zone h3{font-size:22px;font-weight:500}.dz-icon{background:transparent;border:none;color:var(--studio-accent);box-shadow:none}
+.btn-download-primary{background:var(--studio-accent);border:0;color:var(--bg-app);border-radius:12px;box-shadow:none;font-weight:600}
+body[data-theme=light] .btn-download-primary{color:white}
+.dir-bar{border-radius:12px;background:var(--bg-panel)}.studio-dialog{border-radius:22px}.studio-head h2{font-size:19px}.studio-help{opacity:.8}

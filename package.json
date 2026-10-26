@@ -1,0 +1,19 @@
+{
+  "name": "media-converter",
+  "version": "2.6.0",
+  "private": true,
+  "description": "Media Converter: app, site e ferramentas",
+  "license": "MIT",
+  "author": "Alex Ascencio",
+  "scripts": {
+    "test": "node --test tests/core.test.cjs tests/v2.test.cjs",
+    "test:integration": "node tests/engine.integration.cjs",
+    "test:office": "node tests/engine.integration.cjs --office",
+    "serve": "node scripts/serve-site.cjs",
+    "css": "node scripts/recolor-from-downloader.cjs && node scripts/recolor-site.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.9.3",
+    "electron-builder": "26.15.3"
+  }
+}
