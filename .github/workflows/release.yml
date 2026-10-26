@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: desktop-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     strategy:
@@ -70,5 +73,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           version=$(node -p "require('./app/package.json').version")
-          gh release view "v$version" || gh release create "v$version" --title "Media Converter $version" --notes-file docs/RELEASE.md --target "$GITHUB_SHA" --prerelease
+          gh release view "v$version" || gh release create "v$version" --title "Media Converter $version" --notes-file docs/RELEASE.md --target "$GITHUB_SHA" --prerelease || gh release view "v$version"
           find dist -maxdepth 1 -type f \( -name '*.exe' -o -name '*.dmg' -o -name '*.zip' -o -name '*.AppImage' -o -name '*.deb' \) -print0 | xargs -0 gh release upload "v$version" --clobber

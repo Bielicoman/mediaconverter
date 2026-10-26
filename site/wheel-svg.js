@@ -81,8 +81,11 @@
     if (opts.interactive !== false) {
       // Fatia sob o ponteiro, pelo ângulo: funciona com mouse, caneta e toque (sem hover).
       sliceAt = e => {
-        const r = svg.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width * 400 - C, y = (e.clientY - r.top) / r.height * 400 - C;
+        const matrix=svg.getScreenCTM();
+        if(!matrix)return -1;
+        const pointer=svg.createSVGPoint();pointer.x=e.clientX;pointer.y=e.clientY;
+        const local=pointer.matrixTransform(matrix.inverse());
+        const x=local.x-C,y=local.y-C;
         const dist = Math.hypot(x, y);
         if (dist < R_IN * 0.55 || dist > R_OUT + 30) return -1;
         const ang = (Math.atan2(y, x) * 180 / Math.PI + 90 + 360 + step / 2) % 360;
