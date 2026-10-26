@@ -13,7 +13,7 @@ Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens
 | Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-win-x64.exe) |
 | Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-arm64.dmg) |
 | Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x64.deb) |
+| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x86_64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-amd64.deb) |
 
 A versão multiplataforma é uma prévia. Mac sem assinatura Developer ID/notarização. AppImage requer FUSE; o DEB é a alternativa para Ubuntu e derivados. FFmpeg e FFprobe vêm incluídos.
 
@@ -59,3 +59,4 @@ O workflow do GitHub usa runners nativos para Windows x64, Linux x64, Mac Intel 
 ## Licenças
 
 Código próprio sob [MIT](LICENSE). Motores e fontes mantêm suas licenças; consulte [avisos de terceiros](THIRD-PARTY-NOTICES.md). O [Media Downloader](https://mediadownloader-blush.vercel.app) é o aplicativo complementar para baixar mídia.
+
