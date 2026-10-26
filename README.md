@@ -1,69 +1,61 @@
 <p align="center"><img src="site/logo.png" width="76" alt="Media Converter"></p>
 <h1 align="center">Media Converter</h1>
-<p align="center">Qualquer arquivo, no formato certo. Uma cópia nova, o original intacto.</p>
+<p align="center">Converta arquivos locais. Receba uma cópia nova. Preserve o original.</p>
 
-Aplicativo gratuito de Alex Ascencio para Windows 10 e 11 (x64). Mesma identidade do [Media Downloader](https://mediadownloader-blush.vercel.app), em verde. Sem plugins de edição: o atalho rápido é a **roda seletora** do Windows.
+[Site oficial](https://mediaconverter-henna.vercel.app) · [Downloads 2.6.0](https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.0) · [Notas da versão](docs/RELEASE.md)
 
-## Versão 2.5.0
+Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens, documentos, PDFs, dados, legendas e arquivos compactados. Painel, Studio de ajustes, histórico, pastas automáticas e roda rápida com uma fatia por opção, sem espaços vazios.
 
-[Instalador Windows x64](dist/MediaConverter-2.5.0-Windows-x64-Setup.exe) · [Upgrade e evidências](docs/UPGRADE-2.5.md) · [Sistema visual](DESIGN.md)
+## Downloads
 
-Novo Studio de ajustes: recorte visual, tamanho, rotação, fundo, presets, trecho, velocidade e áudio. PDFs podem ser unidos, reordenados e girados sem Office. Pastas automáticas processam novos arquivos. Tema claro e escuro; logo com borda branca.
+| Sistema | Pacotes |
+|---|---|
+| Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-win-x64.exe) |
+| Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-arm64.dmg) |
+| Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x64.deb) |
 
-## O que faz
+A versão multiplataforma é uma prévia. Mac sem assinatura Developer ID/notarização. AppImage requer FUSE; o DEB é a alternativa para Ubuntu e derivados. FFmpeg e FFprobe vêm incluídos.
 
-| Tipo | Converte para | Motor |
-|---|---|---|
-| Vídeo | MP4 H.264 · H.265 · AV1 · AVI · WebM VP9 · ProRes 422 HQ · DNxHR HQ · MKV/MP4 sem recompressão · GIF · quadro PNG · MP3/WAV/FLAC/M4A | FFmpeg 6.1.1 (NVENC quando houver GPU NVIDIA) |
-| Áudio | MP3 · WAV 24-bit · FLAC · M4A · OGG · Opus · AIFF · ALAC · AAC · AC3 | FFmpeg |
-| Imagem | PNG · JPG · WebP · AVIF · TIFF · BMP · GIF · ICO · JP2 · TGA · PDF | FFmpeg; SVG/AVIF pelo Chromium; HEIC/JXR pelo WIC do Windows |
-| Word | PDF · DOCX · ODT · RTF · TXT · HTML | Microsoft Word instalado (COM) |
-| Excel | PDF · XLSX · CSV UTF-8 · ODS | Microsoft Excel instalado |
-| PowerPoint | PDF · PPTX · ODP · slides em PNG | Microsoft PowerPoint instalado |
-| PDF | Unir · selecionar/reordenar páginas · girar · páginas em PNG/JPG · DOCX editável · TXT | pdf-lib sem Office · Windows.Data.Pdf (WinRT) · Word |
-| Texto/Markdown/HTML | PDF · HTML · DOCX · TXT | Chromium do app · Word |
-| Dados | JSON · CSV · TSV · XLSX | JavaScript · Excel |
-| Legendas | SRT · VTT · ASS | FFmpeg |
-| Arquivos | ZIP · 7Z · TAR; extrair ZIP, 7Z, RAR, TAR, GZ, BZ2, XZ, ISO e CAB | System.IO.Compression · 7-Zip |
+## O que funciona
 
-Regras: a saída nunca sobrescreve nada (`nome (convertido).ext`); a cópia é gravada como `*.convertendo.*` e só recebe o nome final inteira; cancelar apaga a parcial. Converter não recupera qualidade perdida. O limite de resolução só reduz; o Studio permite escolher explicitamente um novo tamanho.
+- Vídeo e áudio: conversão, trecho, velocidade, resolução, extração de áudio e normalização.
+- Imagens: formatos comuns, recorte visual, tamanho, rotação, fundo e compressão.
+- PDF: unir, selecionar, reordenar e girar páginas localmente, sem Office.
+- Documentos: Microsoft Office instalado no Windows; LibreOffice instalado no macOS/Linux.
+- Arquivos compactados: ZIP, 7Z, TAR e extração conforme os formatos suportados pelo motor nativo.
+- Pastas automáticas: novos arquivos viram cópias em uma pasta de saída isolada.
+
+Conversões que dependem de componentes exclusivos do Windows, como PDF para imagens via WinRT e algumas rotas do Office, aparecem indisponíveis em macOS/Linux. Não há plugins para editores.
 
 ## Roda rápida
 
-- **Botão direito → “Converter com Media Converter”** (HKCU, sem administrador; no Windows 11 em “Mostrar mais opções”). Seleção múltipla vira uma única roda.
-- **Atalho global** `Alt+Shift+C` (configurável): lê os arquivos selecionados na janela do Explorador em primeiro plano (aba ativa), na área de trabalho ou copiados com Ctrl+C.
-- **Enviar para → Media Converter (roda rápida)**.
-- **Shift + arraste** ou **Ctrl+Shift + arraste** no Windows, configuráveis.
-- Número + Enter escolhe a fatia; setas navegam; Tab alterna rodas; Esc cancela.
-- **Sem limite de formatos.** Todos aparecem juntos, com número global uniforme de divisões entre tipos. Posições sem conversão compatível ficam livres.
+Selecione arquivos pelo app ou arraste-os para a roda. Digite o número do formato e pressione Enter; setas navegam, Tab alterna conversões/ferramentas/ações e Esc fecha. Clique fora fecha sem cancelar uma conversão em andamento.
 
-## Estrutura
+No Windows, há integração com o Explorador, Enviar para e atalho global. O gesto automático aceita somente eventos reconhecidos de arraste originados no Explorador/desktop, sobre uma área do shell e com arquivos válidos. Movimento do mouse com Shift sozinho não abre a roda. A detecção depende dos eventos emitidos pelo shell; o atalho e o painel são as alternativas quando o evento não é disponibilizado. O gesto físico ainda requer validação no computador de destino.
 
-```
-app/src/core   lógica pura e testável (catálogo, argumentos do FFmpeg, nomes, CSV/JSON/Markdown)
-app/src/host   adaptadores: FFmpeg, Office/WinRT/WIC/ZIP via PowerShell, Chromium, registro do Windows
-app/src/ui     painel e roda (contextIsolation + sandbox; sem Node na interface)
-site/          site estático (Vercel)
-```
-
-## Desenvolvimento
+## Desenvolver e testar
 
 ```sh
-npm test                      # unidade (núcleo)
-npm run test:integration      # conversões reais com o FFmpeg empacotado
-npm run test:office           # inclui Word e Excel (exige Office)
-node scripts/package-windows.cjs --electron <pasta do Electron 44.7.0 extraído>
-node scripts/serve-site.cjs   # site em http://127.0.0.1:4173
+npm ci
+npm ci --prefix app
+node scripts/prepare-native.cjs
+npm test
+npx electron app
 ```
 
-O CSS do app e do site é gerado a partir do Media Downloader (`scripts/recolor-*.cjs`) para manter a identidade em sincronia.
+Para empacotar no sistema de destino:
 
-## Licença
+```sh
+npx electron-builder --config installers/electron-builder.json --publish never
+```
 
-Código próprio sob [MIT](LICENSE). FFmpeg (build gyan.dev essentials 6.1.1) sob GPL; veja [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Contato: **ascencioalexgabriel@gmail.com**.
+O workflow do GitHub usa runners nativos para Windows x64, Linux x64, Mac Intel e Apple Silicon. Executa testes de conversão e abertura do painel antes de publicar os pacotes. Isso não substitui revisão visual e instalação manual em cada computador.
 
+## Exemplos reais
 
+[Proposta DOCX](site/examples/proposta-criativa.docx) → [PDF convertido](site/examples/proposta-criativa.pdf). O arquivo foi convertido pelo motor do app no Windows. [PNG original](site/logo.png) → [WebP convertido](site/examples/marca.webp). Sem dados pessoais nas amostras.
 
+## Licenças
 
-
-
+Código próprio sob [MIT](LICENSE). Motores e fontes mantêm suas licenças; consulte [avisos de terceiros](THIRD-PARTY-NOTICES.md). O [Media Downloader](https://mediadownloader-blush.vercel.app) é o aplicativo complementar para baixar mídia.
