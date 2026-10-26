@@ -153,7 +153,7 @@ function targetInfo(id) {
   if (process.platform !== 'win32' && (t.engine==='pdfwin'||(t.engine==='office'&&(t.folder||t.viaCsv||id.startsWith('pdf_'))))) {info.available=false;info.reason='Esta conversão específica usa componentes do Windows.';}
   if (t.engine === 'office' && officeCache && !officeCache[t.app]) {
     info.available = false;
-    info.reason = { word: 'Requer Microsoft Word', excel: 'Requer Microsoft Excel', powerpoint: 'Requer Microsoft PowerPoint' }[t.app];
+    info.reason = process.platform!=='win32' ? 'Requer LibreOffice instalado' : { word: 'Requer Microsoft Word', excel: 'Requer Microsoft Excel', powerpoint: 'Requer Microsoft PowerPoint' }[t.app];
   }
   return info;
 }

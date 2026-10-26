@@ -481,7 +481,8 @@
     const row = (k, ok, text) => grid.append(h('span', { text: k }), h('span', { class: ok ? 'ok' : 'no', text }));
     row('FFmpeg (vídeo, áudio, imagem, legenda)', Boolean(e.ffmpeg), e.ffmpeg ? 'v' + e.ffmpeg : 'Ausente');
     row('GPU NVIDIA NVENC', e.gpu && e.gpu.h264_nvenc, e.gpu && e.gpu.h264_nvenc ? 'Disponível' : 'Não detectada · usa o processador');
-    for (const [k, name] of [['word', 'Microsoft Word'], ['excel', 'Microsoft Excel'], ['powerpoint', 'Microsoft PowerPoint']]) row(name, e.office && e.office[k], e.office && e.office[k] ? 'Instalado' : 'Não instalado');
+    const officeNames=e.platform==='win32' ? [['word','Microsoft Word'],['excel','Microsoft Excel'],['powerpoint','Microsoft PowerPoint']] : [['word','LibreOffice · documentos'],['excel','LibreOffice · planilhas'],['powerpoint','LibreOffice · apresentações']];
+    for (const [k, name] of officeNames) row(name, e.office && e.office[k], e.office && e.office[k] ? 'Instalado' : 'Não instalado');
     row('PDF do Windows (páginas em imagem)', e.pdf, e.pdf ? 'Disponível' : 'Indisponível');
     row('Leitura da seleção do Explorador', e.explorer, e.explorer ? 'Pronta' : 'Indisponível');
     const dot = $('engineDot');
@@ -510,6 +511,8 @@
     if(info.platform!=='win32'){
       document.querySelectorAll('[data-integration]').forEach(button=>{button.disabled=true;button.title='Integração do Windows';button.closest('.integration').hidden=true;});
       $('gestureSelect').disabled=true;
+      const help=document.querySelector('.studio-help');
+      if(help){help.children[0].hidden=true;help.children[1].hidden=true;help.children[3].textContent='abre a roda';}
     }
     document.body.dataset.theme = settings.theme;
     $('gestureSelect').value = settings.gesture;
