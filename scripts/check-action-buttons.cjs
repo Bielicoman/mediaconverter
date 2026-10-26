@@ -17,5 +17,8 @@ app.whenReady().then(()=>setTimeout(async()=>{try{
  await win.webContents.executeJavaScript(`document.querySelector('.history-item-actions button[title="Abrir arquivo"]').click()`);
  await win.webContents.executeJavaScript(`document.querySelector('.history-item-actions button[title="Mostrar na pasta"]').click()`);
  if(calls.length!==2||calls[0].action!=='open'||calls[1].action!=='folder'||calls.some(c=>c.path!==output))throw Error('Ação incorreta');
- fs.mkdirSync('docs/validation',{recursive:true});fs.writeFileSync('docs/validation/action-buttons.json',JSON.stringify({passed:true,buttons,calls},null,2));app.exit(0);
+ const geometry=await win.webContents.executeJavaScript(`(()=>{const results=[];const host=document.createElement('div');host.style.cssText='position:fixed;left:0;top:0;width:372px;height:306px';document.body.append(host);for(const count of [1,2,3,6,20,41]){const items=Array.from({length:count},(_,i)=>({badge:'F'+i,label:'Formato '+i,available:true}));const ctl=window.MCWheel.build(host,items);ctl.svg.style.width='100%';ctl.svg.style.height='100%';host.querySelectorAll('.mc-slice').forEach(g=>{g.style.transform='none';g.style.transition='none'});const hits=Array.from(host.querySelectorAll('.mc-badge'),(label,i)=>{const r=label.getBoundingClientRect();return {expected:i,hit:ctl.hit({clientX:r.x+r.width/2,clientY:r.y+r.height/2})}});results.push({count,passed:hits.every(h=>h.hit===h.expected),hits});}host.remove();return results})()`);
+ if(geometry.some(g=>!g.passed))throw Error('Área clicável incorreta: '+JSON.stringify(geometry));
+ fs.mkdirSync('docs/validation',{recursive:true});fs.writeFileSync('docs/validation/action-buttons.json',JSON.stringify({passed:true,buttons,calls,geometry},null,2));app.exit(0);
  }catch(e){fs.writeFileSync('docs/validation/action-buttons-error.txt',e.stack);app.exit(1)}},2500));
+
