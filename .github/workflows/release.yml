@@ -46,7 +46,7 @@ jobs:
           sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
       - name: Native desktop smoke (Linux)
         if: runner.os == 'Linux'
-        run: xvfb-run -a npx electron scripts/native-smoke.cjs
+        run: dbus-run-session -- xvfb-run -a npx electron scripts/native-smoke.cjs
       - name: Native desktop smoke
         if: runner.os != 'Linux'
         run: npx electron scripts/native-smoke.cjs
