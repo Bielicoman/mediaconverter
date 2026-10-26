@@ -38,20 +38,10 @@ document.addEventListener('click', event => {
     say(f.name, '· passe o mouse e escolha uma fatia');
   }
   function pick(i) {
-    const f = FILES[kind], t = f.targets[i];
-    ctl.setActive(i); ctl.setState('busy');
-    let p = 0;
-    clearInterval(timer);
-    timer = setInterval(() => {
-      p = Math.min(1, p + 0.045 + Math.random() * 0.03);
-      ctl.setProgress(p); ctl.setCenter(Math.floor(p * 100) + '%', t.badge);
-      if (p >= 1) {
-        clearInterval(timer); ctl.setState('done');
-        const out = f.name.replace(/\.[^.]+$/, '') + '.' + t.badge.toLowerCase().replace('prores', 'mov').replace('hevc', 'mp4');
-        say('Exemplo concluído', '· no app real, ' + out + ' apareceria ao lado do original');
-        timer = setTimeout(() => show(kind), 3200);
-      }
-    }, 90);
+    const f=FILES[kind],t=f.targets[i];ctl.setActive(i);
+    say(t.label,'· '+t.desc+'. No aplicativo, a conversão cria uma cópia do seu arquivo.');
+    const sample=kind==='document'&&t.badge==='PDF'?'examples/proposta-criativa.pdf':kind==='image'&&t.badge==='WEBP'?'examples/marca.webp':null;
+    if(sample){const link=document.createElement('a');link.href=sample;link.download='';link.textContent=' Baixar o exemplo real';link.style.textDecoration='underline';status.append(link);}
   }
   document.querySelectorAll('[data-demo-file]').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('[data-demo-file]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
