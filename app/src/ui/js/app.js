@@ -32,8 +32,8 @@
   }
   const svgIcon = d => { const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); p.setAttribute('d', d); s.append(p); return s; };
   const ICON = {
-    folder: 'M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z',
-    open: 'M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z',
+    folder: 'M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z',
+    open: 'M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z',
     close: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
     retry: 'M17.65 6.35A7.96 7.96 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z'
   };
@@ -379,8 +379,8 @@
         h('div', { class: 'history-item-thumb badge', text: ext }),
         h('div', { class: 'history-item-info' }, h('div', { class: 'history-item-title', title: it.output, text: basename(it.output) }), h('div', { class: 'history-item-meta', text: meta + (it.from ? ' · de ' + basename(it.from) : '') })),
         h('div', { class: 'history-item-actions' },
-          h('button', { class: 'btn-history-action', title: 'Mostrar na pasta', onclick: async () => { if (!(await api.shell.showItem(it.output))) toast('O arquivo não está mais nesse local.', 'error'); } }, svgIcon(ICON.folder)),
-          h('button', { class: 'btn-history-action', title: 'Abrir', onclick: async () => { if (!(await api.shell.openPath(it.output))) toast('Não foi possível abrir.', 'error'); } }, svgIcon(ICON.open)))));
+          h('button', { class: 'btn-history-action', title: 'Abrir arquivo', 'aria-label':'Abrir arquivo', onclick: async () => { if (!(await api.shell.openPath(it.output))) toast('Não foi possível abrir.', 'error'); } }, svgIcon(ICON.open)),
+          h('button', { class: 'btn-history-action', title: 'Mostrar na pasta', 'aria-label':'Mostrar na pasta', onclick: async () => { if (!(await api.shell.showItem(it.output))) toast('O arquivo não está mais nesse local.', 'error'); } }, svgIcon(ICON.folder)))));
     }
   }
   $('btnClearHistory').onclick = async () => { await api.history.clear(); state.history = []; saveHistory(); renderHistory(); };

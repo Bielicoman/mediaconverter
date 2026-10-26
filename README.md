@@ -2,7 +2,7 @@
 <h1 align="center">Media Converter</h1>
 <p align="center">Converta arquivos locais. Receba uma cópia nova. Preserve o original.</p>
 
-[Site oficial](https://mediaconverter-henna.vercel.app) · [Downloads 2.6.0](https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.0) · [Notas da versão](docs/RELEASE.md)
+[Site oficial](https://mediaconverter-henna.vercel.app) · [Downloads 2.6.1](https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.1) · [Notas da versão](docs/RELEASE.md)
 
 Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens, documentos, PDFs, dados, legendas e arquivos compactados. Painel, Studio de ajustes, histórico, pastas automáticas e roda rápida com uma fatia por opção, sem espaços vazios.
 
@@ -10,10 +10,10 @@ Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens
 
 | Sistema | Pacotes |
 |---|---|
-| Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-win-x64.exe) |
-| Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-arm64.dmg) |
-| Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-x86_64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.0/MediaConverter-2.6.0-linux-amd64.deb) |
+| Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-win-x64.exe) |
+| Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-mac-arm64.dmg) |
+| Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-linux-x86_64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-linux-amd64.deb) |
 
 A versão multiplataforma é uma prévia. Mac sem assinatura Developer ID/notarização. AppImage requer FUSE; o DEB é a alternativa para Ubuntu e derivados. FFmpeg e FFprobe vêm incluídos.
 

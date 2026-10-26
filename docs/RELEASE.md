@@ -1,4 +1,4 @@
-# Media Converter 2.6.0
+# Media Converter 2.6.1
 
 - Design radial escuro aprovado, com uma fatia por opção e nenhum espaço vazio.
 - Rodapé separado da roda; fontes adaptadas à quantidade de opções.
@@ -10,3 +10,5 @@
 Prévia multiplataforma. Builds e testes automatizados em runners nativos não substituem a validação de gestos físicos ou instalação em cada computador. Mac sem assinatura Developer ID/notarização. A roda pode ser aberta no app e receber arquivos; o gesto de sistema é exclusivo do Windows e depende de eventos de acessibilidade emitidos pelo shell.
 
 Exemplos do site: proposta criativa DOCX convertida para PDF pelo motor do app, e ícone PNG convertido para WebP. Nenhum dado pessoal é usado nas amostras.
+
+- 2.6.1: corrigida a associação dos ícones e ações de abrir arquivo e mostrar na pasta.
