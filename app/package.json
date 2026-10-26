@@ -1,7 +1,7 @@
 {
   "name": "mediaconverter-desktop",
   "productName": "Media Converter",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Converta vídeo, áudio, imagem, documentos, planilhas, PDF, dados e legendas, com roda rápida no Windows",
   "main": "src/main.cjs",
   "author": "Alex Ascencio",

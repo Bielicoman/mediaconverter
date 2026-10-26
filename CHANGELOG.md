@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.6.2 — 2026-10-26
+
+- Shift acompanha a sessão de arraste real: segure para mostrar, solte para ocultar.
+- Sessão confirmada permanece válida quando a roda encobre a miniatura do Windows, eliminando o piscar.
+- Abas acessíveis pairando com o arquivo durante o arraste.
+- Removidos os tempos fixos de fechamento e protegida a consulta assíncrona contra reabertura tardia.
+
+
 ## 2.5.0 — 2026-10-26
 
 - Cada opção ocupa uma fatia dos 360 graus, sem espaços vazios ou posições reservadas.

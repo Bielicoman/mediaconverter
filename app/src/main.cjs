@@ -30,23 +30,23 @@ let quitting = false;
 const explorer = new ps.ExplorerHelper();
 let officeCache = null;
 let watcher;
-let gestureMode = false, gestureTimer, gestureGeneration = 0;
+let gestureMode = false, gestureHeld = false, gestureGeneration = 0;
 const { Gesture } = require('./host/gesture.cjs');
 const gesture = new Gesture(async () => {
   if (wheelBusy) return;
   const generation = ++gestureGeneration;
   gestureMode = true;
+  gestureHeld = true;
   const selection = await explorer.selection({ strict: true }).catch(() => null);
   const files = selection?.files.filter(file => { try { return fs.statSync(file).isFile(); } catch { return false; } }) || [];
   if (generation !== gestureGeneration) return;
   if (!gestureMode || wheelBusy || !files.length || !['explorer','desktop'].includes(selection?.source)) { gestureMode = false; return; }
   openWheel(files, 'gesture');
-  clearTimeout(gestureTimer);
-  gestureTimer = setTimeout(() => { if (gestureMode && !wheelBusy) closeWheel(); }, 20000);
 }, () => {
   gestureGeneration++;
-  clearTimeout(gestureTimer);
-  gestureTimer = setTimeout(() => { if (gestureMode && !wheelBusy) closeWheel(); }, 1500);
+  gestureHeld = false;
+  // Ocultar preserva um drop/conversão já recebido pelo renderer.
+  if (gestureMode && wheelWindow && !wheelWindow.isDestroyed()) wheelWindow.hide();
 });
 function historyFile() { return path.join(app.getPath('userData'), 'history-v2.json'); }
 function readHistory() { try { return JSON.parse(fs.readFileSync(historyFile(), 'utf8')).slice(0, 200); } catch (_) { return []; } }
@@ -124,12 +124,18 @@ function openWheel(files, source = 'menu') {
   const file = path.join(__dirname, 'ui', 'wheel.html');
   lockDown(wheelWindow, file);
   wheelWindow.loadFile(file);
-  wheelWindow.webContents.once('did-finish-load', () => { send(wheelWindow, 'wheel:init', payload); if (isGesture) wheelWindow.showInactive(); else { wheelWindow.show(); wheelWindow.focus(); } });
+  const created = wheelWindow;
+  created.webContents.once('did-finish-load', () => {
+    if (created.isDestroyed() || wheelWindow !== created) return;
+    send(created, 'wheel:init', payload);
+    if (isGesture) { if (gestureMode && gestureHeld) created.showInactive(); }
+    else { created.show(); created.focus(); }
+  });
   wheelWindow.on('blur', () => { if (!gestureMode && !wheelBusy && wheelWindow && !wheelWindow.isDestroyed()) closeWheel(); });
   wheelWindow.on('closed', () => { wheelWindow = null; wheelBusy = false; });
 }
 let wheelBusy = false;
-function closeWheel() { gestureMode = false; clearTimeout(gestureTimer); if (wheelWindow && !wheelWindow.isDestroyed()) wheelWindow.close(); }
+function closeWheel() { gestureMode = false; gestureHeld = false; if (wheelWindow && !wheelWindow.isDestroyed()) wheelWindow.close(); }
 
 function wheelPayload(files, source) {
   const s = settings.get();
@@ -365,9 +371,8 @@ function registerIpc() {
   });
   handle('wheel:drop', (_e, files) => {
     if (!isPathList(files) || !files.length) throw new Error('Solte arquivos locais.');
-    gestureMode = false; clearTimeout(gestureTimer);
-    wheelWindow?.show(); wheelWindow?.focus();
-    return wheelPayload(files.filter(f => { try { return fs.statSync(f).isFile(); } catch (_) { return false; } }), 'drop');
+    if (!gestureMode) { wheelWindow?.show(); wheelWindow?.focus(); }
+    return wheelPayload(files.filter(f => { try { return fs.statSync(f).isFile(); } catch (_) { return false; } }), gestureMode ? 'gesture' : 'drop');
   });
   handle('gesture:status', () => ({ ready: gesture.ready, platform: process.platform }));
   handle('app:info', () => ({ version: VERSION, platform: process.platform, packaged: app.isPackaged, userData: app.getPath('userData'), hotkeys: HOTKEYS }));

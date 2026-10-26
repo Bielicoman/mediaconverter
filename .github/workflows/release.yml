@@ -41,6 +41,11 @@ jobs:
       - run: npm ci --prefix app
       - run: node scripts/prepare-native.cjs
       - run: npm test
+      - name: Windows drag state and held-Shift lifecycle
+        if: runner.os == 'Windows'
+        run: |
+          powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File scripts/check-gesture-state.ps1
+          npx electron scripts/check-gesture-lifecycle.cjs
       - name: Configure Linux sandbox helper
         if: runner.os == 'Linux'
         run: |

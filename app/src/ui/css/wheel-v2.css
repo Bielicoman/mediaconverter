@@ -18,3 +18,4 @@ html,body{color:#edf6f0}#stage{inset:55px 28px 52px}.mc-wheel .mc-slice-bg{fill:
 .actions{bottom:39px}
 #stage{display:block}
 #stage svg{display:block;width:100%;height:100%;min-width:0;min-height:0}
+.wheel-modes button.drag-hover{background:#9ce6b818;color:#d4fbe4;box-shadow:inset 0 0 0 1px #9ce6b83b}

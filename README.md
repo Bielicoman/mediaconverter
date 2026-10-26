@@ -2,7 +2,7 @@
 <h1 align="center">Media Converter</h1>
 <p align="center">Converta arquivos locais. Receba uma cópia nova. Preserve o original.</p>
 
-[Site oficial](https://mediaconverter-henna.vercel.app) · [Downloads 2.6.1](https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.1) · [Notas da versão](docs/RELEASE.md)
+[Site oficial](https://mediaconverter-henna.vercel.app) · [Downloads 2.6.2](https://github.com/Bielicoman/mediaconverter/releases/tag/v2.6.2) · [Notas da versão](docs/RELEASE.md)
 
 Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens, documentos, PDFs, dados, legendas e arquivos compactados. Painel, Studio de ajustes, histórico, pastas automáticas e roda rápida com uma fatia por opção, sem espaços vazios.
 
@@ -10,10 +10,10 @@ Aplicativo de Alex Ascencio para Windows, macOS e Linux. Vídeo, áudio, imagens
 
 | Sistema | Pacotes |
 |---|---|
-| Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-win-x64.exe) |
-| Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-mac-arm64.dmg) |
-| Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-linux-x86_64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.1/MediaConverter-2.6.1-linux-amd64.deb) |
+| Windows x64 | [Instalador EXE](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.2/MediaConverter-2.6.2-win-x64.exe) |
+| Mac Apple Silicon | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.2/MediaConverter-2.6.2-mac-arm64.dmg) |
+| Mac Intel | [DMG](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.2/MediaConverter-2.6.2-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.2/MediaConverter-2.6.2-linux-x86_64.AppImage) · [DEB](https://github.com/Bielicoman/mediaconverter/releases/download/v2.6.2/MediaConverter-2.6.2-linux-amd64.deb) |
 
 A versão multiplataforma é uma prévia. Mac sem assinatura Developer ID/notarização. AppImage requer FUSE; o DEB é a alternativa para Ubuntu e derivados. FFmpeg e FFprobe vêm incluídos.
 
@@ -32,7 +32,7 @@ Conversões que dependem de componentes exclusivos do Windows, como PDF para ima
 
 Selecione arquivos pelo app ou arraste-os para a roda. Digite o número do formato e pressione Enter; setas navegam, Tab alterna conversões/ferramentas/ações e Esc fecha. Clique fora fecha sem cancelar uma conversão em andamento.
 
-No Windows, há integração com o Explorador, Enviar para e atalho global. O gesto automático aceita somente eventos reconhecidos de arraste originados no Explorador/desktop, sobre uma área do shell e com arquivos válidos. Movimento do mouse com Shift sozinho não abre a roda. A detecção depende dos eventos emitidos pelo shell; o atalho e o painel são as alternativas quando o evento não é disponibilizado. O gesto físico ainda requer validação no computador de destino.
+No Windows, há integração com o Explorador, Enviar para e atalho global. Durante um arraste real no Explorador ou na área de trabalho, segure Shift para mostrar a roda e solte Shift para ocultá-la. Você pode segurar novamente no mesmo arraste. Passe o arquivo sobre Converter, Ferramentas ou Ações para trocar de aba sem clicar; solte na opção desejada. Movimento com Shift sem arraste real não ativa a roda. O comportamento foi confirmado pelo usuário no Windows; as integrações de sistema são exclusivas do Windows.
 
 ## Desenvolver e testar
 
